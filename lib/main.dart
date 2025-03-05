@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tynerail_tracker/rti_page.dart'; // Real-Time Info Page + Selection
 import 'package:tynerail_tracker/service_status.dart';
+import 'package:tynerail_tracker/live_map.dart';
 import 'package:tynerail_tracker/theme.dart'; // File for where the colours and themes are specified
 import 'dart:async';
 import 'api_service.dart'; // Ensure this file contains your API functions and Station class
@@ -35,10 +36,11 @@ class _HomePageState extends State<HomePage> {
   List<String> platforms = [];
   List<dynamic> trainData = [];
   Timer? timer;
-  int _selectedIndex = 0; // Tracks selected tab
+  int _selectedIndex = 1; // Defaults to Real Time info Page
 
     // List of pages
   final List<Widget> _pages = [
+    LiveMapPage(),
     RealTimePage(), // Real Time Info Page (rti_page.dart)
     ServiceStatusPage(), // Service Status Page (service_status.dart)
   ];
@@ -60,7 +62,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Real Time Metro Data'),
         actions: [
-
+          IconButton(
+            icon: Icon(Icons.question_mark, semanticLabel: "About",),
+            color: Colors.white,
+            onPressed: null,
+          ),
         ],
         ),
 
@@ -69,17 +75,25 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
 
-          items: [ 
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.map_outlined),
+              activeIcon: Icon(Icons.map),
+              label: "Live Map"
+            ),
+
             BottomNavigationBarItem(
               icon: Icon(Icons.subway_outlined),
               activeIcon: Icon(Icons.subway),
               label: "Tracking",
-              ),
+            ),
+
             BottomNavigationBarItem(
               icon: Icon(Icons.info_outline),
               activeIcon: Icon(Icons.info),
               label: "Service Status"
-              ),
+            ),
+
           ],
           onTap: _onNavBarTapped
           ),

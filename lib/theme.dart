@@ -69,6 +69,7 @@ ThemeData appTheme = ThemeData(
   primarySwatch: AppColors.metroMaterial,
 
   scaffoldBackgroundColor: AppColors.background,
+  
 
     // Text Styles
   textTheme: const TextTheme(
@@ -86,6 +87,7 @@ ThemeData appTheme = ThemeData(
   appBarTheme: AppBarTheme(
     backgroundColor: AppColors.appBarBackground,
     foregroundColor: AppColors.appBarForeground,
+    
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: AppColors.appBarBackground,
