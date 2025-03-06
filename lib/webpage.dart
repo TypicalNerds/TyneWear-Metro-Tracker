@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:tynerail_tracker/theme.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class ServiceStatusPage extends StatefulWidget {
-  const ServiceStatusPage({super.key});
+class Webpage extends StatefulWidget {
+  const Webpage({super.key, required this.url});
+  final String url;
 
   @override
-  _ServiceStatusPageState createState() => _ServiceStatusPageState();
-  
+  _WebpageState createState() => _WebpageState();
   
 }
 
-class _ServiceStatusPageState extends State<ServiceStatusPage> {
+class _WebpageState extends State<Webpage> {
   late WebViewController _controller;
   
   @override
@@ -20,7 +20,7 @@ class _ServiceStatusPageState extends State<ServiceStatusPage> {
 
     WebViewController webViewController = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse('https://google.com')
+      ..loadRequest(Uri.parse(widget.url)
       );
     
     _controller = webViewController;

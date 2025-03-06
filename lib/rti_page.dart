@@ -25,6 +25,41 @@ class _RealTimePageState extends State<RealTimePage> {
     _fetchStations();
   }
 
+// Create function to prompt user to retry
+  void _showLoadError(String errorMessage, String stationCode) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        icon: Icon(Icons.warning),
+        title: Text("Something went wrong"),
+        titleTextStyle: Theme.of(context).textTheme.titleMedium,
+        contentTextStyle: Theme.of(context).textTheme.bodyLarge,
+        content: Text("$errorMessage"),
+        actions: [
+          TextButton.icon(
+            label: Text("Retry"),
+            icon: Icon(Icons.refresh),
+
+            onPressed: () {
+              // Check if error was station or platforms and retry accordingly.
+              if (errorMessage.toLowerCase().contains("station")) {
+                _fetchStations();
+              } else if (stationCode.isEmpty) {
+                AlertDialog(
+                title: Text("Something went wrong."),
+                );
+              } else {
+                _fetchPlatforms(stationCode);
+              }
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      )
+    );
+  }
+
   Future<void> _fetchStations() async {
     try {
       List<Station> fetchedStations = (await fetchStations()).cast<Station>();
@@ -33,6 +68,8 @@ class _RealTimePageState extends State<RealTimePage> {
       });
     } catch (e) {
       debugPrint('Error fetching stations: $e');
+      _showLoadError("Failed to Load Stations\nCheck your network connection.", "");
+
     }
   }
 
@@ -45,6 +82,7 @@ class _RealTimePageState extends State<RealTimePage> {
       });
     } catch (e) {
       debugPrint('Error fetching platforms: $e');
+      _showLoadError("Failed to Load Stations\nCheck your network connection.", stationCode);
     }
   }
 
@@ -84,21 +122,19 @@ class _RealTimePageState extends State<RealTimePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DropdownButton<Station>( // Dropdown for Station objects
-              dropdownColor: AppColors.dropdownBackground,
-              focusColor: AppColors.dropdownFocusBackground,
               style: Theme.of(context).textTheme.labelMedium,
               value: selectedStation,
               hint: const Text(
                 'Select a station',
                 style: AppStyles.labelMedium,
-                ),
+              ),
               items: stations.map((station) {
                 return DropdownMenuItem<Station>(
                   value: station,
                   child: Text( // Station name text
                     station.name,
                     style: Theme.of(context).textTheme.labelMedium, // Get formatting from the label medium formatting
-                    ), // Display station name
+                  ), // Display station name
                 );
               }).toList(),
               onChanged: (value) {
@@ -113,8 +149,6 @@ class _RealTimePageState extends State<RealTimePage> {
             ),
             if (platforms.isNotEmpty)
               DropdownButton<String>(
-                dropdownColor: AppColors.dropdownBackground,
-                focusColor: AppColors.dropdownFocusBackground,
                 value: selectedPlatform,
                 hint: const Text(
                   'Select a platform',
@@ -145,13 +179,26 @@ class _RealTimePageState extends State<RealTimePage> {
               child: Container(color: AppColors.dropdownToLists,),
             ),
             Expanded(
-  child: trainData.isEmpty
+  child: stations.isEmpty 
+    ? Center(
+        child: CircularProgressIndicator(),
+      )
+    : selectedPlatform == null || selectedStation == null
       ? Center(
-        child: Text(
-        'No data available!\nSelect a station & platform\nor Check Service Status',
-        style: Theme.of(context).textTheme.displayLarge,
-        textAlign: TextAlign.center,
-        ))
+          child: Text(
+          'Select a Station & Platform to Continue',
+          style: Theme.of(context).textTheme.displayLarge,
+          textAlign: TextAlign.center,
+          )
+        )
+    : selectedPlatform != null && selectedStation != null && trainData.isEmpty
+      ? Center(
+          child: Text(
+          'No data available!\nTry Another Platform\nor Check Service Status',
+          style: Theme.of(context).textTheme.displayLarge,
+          textAlign: TextAlign.center,
+          )
+        )
       : ListView.builder(
           itemCount: trainData.length,
           itemBuilder: (context, index) {
@@ -168,9 +215,12 @@ class _RealTimePageState extends State<RealTimePage> {
                 ),
                 trailing: Text(
                   checkArrived(train.dueIn), // Call function to show cleaner text
-                  style: Theme.of(context).textTheme.labelLarge, // Use label style
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                    color: train.dueIn < 2 ? ColorScheme.of(context).onSecondary : null,
+                  ),
                   textAlign: TextAlign.center, // Align Due text to Centre
-                  ), 
+                ),
+                tileColor: train.dueIn < 2 ? ColorScheme.of(context).primary : null,
                 titleAlignment: ListTileTitleAlignment.center,
                 isThreeLine: true,
 
@@ -197,6 +247,8 @@ class _RealTimePageState extends State<RealTimePage> {
 
 }
 
+// Some Boring Functions to just re-format the API data into something readable
+
 // Check line colours and return appropriate material colour
 Color checkLineColor(String line) {
   if (line == "YELLOW") {
@@ -219,7 +271,7 @@ String checkArrived(dueIn) {
     return "Arrived";
   } else {
     // If nothing of the above applies, show the minute counter.
-    return "Due In:\n${dueIn} mins";
+    return "Due In:\n$dueIn mins";
   }
 }
 
