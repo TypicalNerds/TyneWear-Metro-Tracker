@@ -121,11 +121,12 @@ class _RealTimePageState extends State<RealTimePage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            // Add Disclaimer to ensure users know I'm not affiliated with Nexus.
             ListTile(
               title: Text("This app is not affiliated with Nexus or any official transport authority.", textAlign: TextAlign.center,),
               titleAlignment: ListTileTitleAlignment.center,
-
             ),
+            
             DropdownButton<Station>( // Dropdown for Station objects
               style: Theme.of(context).textTheme.labelMedium,
               value: selectedStation,
