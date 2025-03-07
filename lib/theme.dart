@@ -57,20 +57,9 @@ class AppColors {
   static const Color error = secondary;
   static const Color onError = secondary;
 
-
-  // AppBar Colours
-  // static const Color appBarBackground = Color.fromARGB(255, 26, 26, 26);
-  // static const Color appBarForeground = metroColor;
-
   // Dividers
   // static const Color listDivider = Colors.white60;
   static const Color dropdownToLists = Colors.white10;
-
-  // Dropdown Colour Scheme
-  // static const Color disabledDropdown = Colors.white60;
-  // static const Color dropdown = Colors.white60;
-  // static const Color dropdownBackground = Color.fromARGB(255, 26, 26, 26);
-  // static const Color dropdownFocusBackground = Colors.white24;
   
   // Define train line colors
   static const Color yellowLine = Colors.yellow;
