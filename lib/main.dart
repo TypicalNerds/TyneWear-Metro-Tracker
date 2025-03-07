@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                   barrierDismissible: true,
                   context: context,
                   applicationName: "Metro Tracker",
-                  applicationVersion: "v1.0.0",
+                  applicationVersion: "v0.1.0",
                   children: [
                     // TODO - GitHub URL Opener
                     TextButton.icon(
