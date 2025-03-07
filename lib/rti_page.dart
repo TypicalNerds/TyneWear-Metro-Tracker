@@ -35,7 +35,7 @@ class _RealTimePageState extends State<RealTimePage> {
         title: Text("Something went wrong"),
         titleTextStyle: Theme.of(context).textTheme.titleMedium,
         contentTextStyle: Theme.of(context).textTheme.bodyLarge,
-        content: Text("$errorMessage"),
+        content: Text(errorMessage),
         actions: [
           TextButton.icon(
             label: Text("Retry"),

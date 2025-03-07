@@ -18,7 +18,6 @@ class _WebpageState extends State<Webpage> {
   @override
   void initState() {
     super.initState();
-      
   }
 
   @override
@@ -80,7 +79,8 @@ class _WebpageState extends State<Webpage> {
   
   // Function to just handle refreshing of the page
   // TODO - Fix Refresh so it actually recognises user inputs.
-  Future<void> _handleRefresh() async {
+
+  Future<void> handleRefresh() async {
     setState(() => _isLoading = true); // Show loading animation on refresh
     await _webController.clearCache();
     await _webController.reload();

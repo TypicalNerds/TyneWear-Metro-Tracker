@@ -40,9 +40,9 @@ class _HomePageState extends State<HomePage> {
 
     // List of pages
   final List<Widget> _pages = [
-    Webpage(url: "https://metro-rti.nexus.org.uk/MapEmbedded"), // Load Live Map Webpage
+    Webpage(url: "https://metro-rti.nexus.org.uk/MapEmbedded",), // Load Live Map Webpage
     RealTimePage(), // Real Time Info Page
-    Webpage(url: "https://www.nexus.org.uk/metro/app_menu/service-status"), // Loads Service Status Webpage
+    Webpage(url: "https://www.nexus.org.uk/metro/app_menu/service-status",), // Loads Service Status Webpage
   ];
 
   void _onNavBarTapped(int index) {
@@ -60,8 +60,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Real Time Metro Data'),
-        ),
+        title: const Text('Real Time Metro Data'),),
 
         // Hamburger Menu
         drawer: Drawer(
