@@ -73,16 +73,32 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               DrawerHeader(
-                child: Center(child: Text("Tyne & Wear Metro Tracker", style: AppStyles.titleLarge,),),
+                child: Center(child: Text("Tyne & Wear Metro Tracker\nV0.1.1 (BETA)", style: AppStyles.titleLarge,),),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [AppColors.metroMaterial.shade800, AppColors.metroMaterial.shade300])
                 ),
               ),
               ListTile(
-                title: Text("GitHub"),
+                title: Text("Planned Works"),
+                leading: Icon(Icons.construction),
+                onTap: () => launchUrlString("https://www.nexus.org.uk/metro/updates?open=t_planned-works"),
+              ),
+              ListTile(
+                title: Text("Timetable Changes"),
+                leading: Icon(Icons.track_changes),
+                onTap: () => launchUrlString("https://www.nexus.org.uk/metro/updates?open=t_planned-works"),
+              ),
+              ListTile(
+                title: Text("Source Code"),
                 leading: Icon(Icons.code),
                 onTap: () => launchUrlString("https://github.com/TypicalNerds/TyneWear-Metro-Tracker"),
-              )
+              ),
+              ListTile(
+                title: Text("TypicalNerds Website"),
+                leading: Icon(Icons.web),
+                onTap: () => launchUrlString("https://typicalnerds.uk"),
+              ),
+
 
               // ListTile(
               //   title: Text("About App"),
