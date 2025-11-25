@@ -55,7 +55,7 @@ class AppColors {
   static const Color surface = Color.fromARGB(255, 26, 26, 26);
   static const Color onSurface = Colors.white;
   static const Color error = secondary;
-  static const Color onError = secondary;
+  static const Color onError = Colors.white;
 
   // Dividers
   // static const Color listDivider = Colors.white60;
@@ -130,9 +130,8 @@ ThemeData appTheme = ThemeData(
   dialogTheme: DialogThemeData(
     backgroundColor: AppColors.darkColorScheme.primary,
     titleTextStyle: AppStyles.titleLarge,
+    iconColor: AppColors.onSurface,
     contentTextStyle: AppStyles.bodyMedium,
-
-
   ),
 
   progressIndicatorTheme: ProgressIndicatorThemeData(

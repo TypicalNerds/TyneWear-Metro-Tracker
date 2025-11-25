@@ -212,7 +212,7 @@ class _RealTimePageState extends State<RealTimePage> {
 
             return ListTile(
               title: Text(
-                train.destination, // Use train.destination
+                "${train.destination} (${train.trainNumber})", // Use train.destination
                 style: Theme.of(context).textTheme.titleLarge, // Use headline style
                 ),
               subtitle: Text(

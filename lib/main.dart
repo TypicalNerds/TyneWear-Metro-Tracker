@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tynerail_tracker/rti_page.dart'; // Real-Time Info Page + Selection
 import 'package:tynerail_tracker/theme.dart'; // File for where the colours and themes are specified
 import 'package:tynerail_tracker/webpage.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'dart:async';
 import 'api_service.dart'; // Ensure this file contains your API functions and Station class
+// ignore: unused_import
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -75,27 +78,32 @@ class _HomePageState extends State<HomePage> {
                   gradient: LinearGradient(colors: [AppColors.metroMaterial.shade800, AppColors.metroMaterial.shade300])
                 ),
               ),
-
               ListTile(
-                title: Text("About App"),
-                leading: Icon(Icons.info_outline),
-
-                onTap: () => showAboutDialog(
-                  barrierDismissible: true,
-                  context: context,
-                  applicationName: "Metro Tracker",
-                  applicationVersion: "v0.1.0",
-                  children: [
-                    // TODO - GitHub URL Opener
-                    TextButton.icon(
-                      icon: Icon(Icons.code),
-                      label: Text("Useless Button"),
-                      onPressed: null
-                      )
-                  ]
-                ),
-
+                title: Text("GitHub"),
+                leading: Icon(Icons.code),
+                onTap: () => launchUrlString("https://github.com/TypicalNerds/TyneWear-Metro-Tracker"),
               )
+
+              // ListTile(
+              //   title: Text("About App"),
+              //   leading: Icon(Icons.info_outline),
+
+              //   onTap: () => showAboutDialog(
+              //     barrierDismissible: true,
+              //     context: context,
+              //     applicationName: "Metro Tracker",
+              //     applicationVersion: "v0.1.1",
+              //     children: [
+              //       // TODO - GitHub URL Opener
+              //       TextButton.icon(
+              //         icon: Icon(Icons.code),
+              //         label: Text("GitHub"),
+              //         onPressed: () => launchUrlString("https://github.com/TypicalNerds/TyneWear-Metro-Tracker"),
+              //         ),
+              //     ]
+              //   ),
+
+              // )
             ],
           ),
         ),

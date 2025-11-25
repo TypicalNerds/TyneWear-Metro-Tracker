@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Webpage extends StatefulWidget {
@@ -59,6 +61,7 @@ class _WebpageState extends State<Webpage> {
             onPageFinished: (String url) {
               setState(() => _isLoading = false);
             },
+            onNavigationRequest: (request) => NavigationDecision.prevent,
           ),
         )
         ..loadRequest(Uri.parse(widget.url));
