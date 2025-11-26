@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:tynerail_tracker/rti_page.dart'; // Real-Time Info Page + Selection
 import 'package:tynerail_tracker/theme.dart'; // File for where the colours and themes are specified
@@ -48,6 +49,7 @@ class _HomePageState extends State<HomePage> {
     RealTimePage(), // Real Time Info Page
     Webpage(url: "https://www.nexus.org.uk/metro/app_menu/service-status",), // Loads Service Status Webpage
     Webpage(url: "https://www.nexus.org.uk/metro/app_menu/",),
+    Webpage(url: "https://www.nexus.org.uk/")
   ];
 
   void _onNavBarTapped(int index) {
@@ -66,7 +68,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Metro Tracker'),),
-        
+
         // Hamburger Menu
         drawer: Drawer(
           child: Column(
@@ -98,6 +100,11 @@ class _HomePageState extends State<HomePage> {
                 title: Text("TypicalNerds Website"),
                 leading: Icon(Icons.web),
                 onTap: () => launchUrlString("https://typicalnerds.uk"),
+              ),
+              ListTile(
+                title: Text("Nexus Website"),
+                leading: Icon(Icons.web),
+                onTap: () => launchUrlString("https://www.nexus.org.uk/metro"),
               ),
 
               // ListTile(

@@ -84,7 +84,7 @@ class _WebpageState extends State<Webpage> {
   void didUpdateWidget(covariant Webpage oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.url != widget.url) {
-      _webController.loadRequest(Uri.parse(widget.url)); // Update the WebView URL
+      _webController.loadRequest(Uri.parse(widget.url)); // Update the WebView URL 
     }
   }
   
