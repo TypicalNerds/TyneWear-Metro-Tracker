@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -61,7 +62,14 @@ class _WebpageState extends State<Webpage> {
             onPageFinished: (String url) {
               setState(() => _isLoading = false);
             },
-            onNavigationRequest: (request) => NavigationDecision.prevent,
+            // Manage how the app decides what urls can be opened within the app or gets loaded via the users web browser
+            onNavigationRequest: (request) {
+              if (request.url.contains("www.nexus.org.uk/metro/app_menu"))
+                return NavigationDecision.navigate;
+              else 
+                launchUrlString(request.url);
+                return NavigationDecision.prevent;
+            },
           ),
         )
         ..loadRequest(Uri.parse(widget.url));

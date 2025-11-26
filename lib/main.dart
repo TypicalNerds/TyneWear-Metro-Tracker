@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     Webpage(url: "https://metro-rti.nexus.org.uk/MapEmbedded",), // Load Live Map Webpage
     RealTimePage(), // Real Time Info Page
     Webpage(url: "https://www.nexus.org.uk/metro/app_menu/service-status",), // Loads Service Status Webpage
+    Webpage(url: "https://www.nexus.org.uk/metro/app_menu/",),
   ];
 
   void _onNavBarTapped(int index) {
@@ -99,7 +100,6 @@ class _HomePageState extends State<HomePage> {
                 onTap: () => launchUrlString("https://typicalnerds.uk"),
               ),
 
-
               // ListTile(
               //   title: Text("About App"),
               //   leading: Icon(Icons.info_outline),
@@ -148,6 +148,12 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.notifications_none),
               activeIcon: Icon(Icons.notifications),
               label: "Service Status"
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.menu),
+              activeIcon: Icon(Icons.menu_open),
+              label: "More"
             ),
 
           ],
