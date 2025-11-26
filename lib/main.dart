@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               DrawerHeader(
-                child: Center(child: Text("Tyne & Wear Metro Tracker\nV0.1.1 (BETA)", style: AppStyles.titleLarge,),),
+                child: Center(child: Text("Tyne & Wear Metro Tracker\nV0.1.2 (BETA)", style: AppStyles.titleLarge,),),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [AppColors.metroMaterial.shade800, AppColors.metroMaterial.shade300])
                 ),
