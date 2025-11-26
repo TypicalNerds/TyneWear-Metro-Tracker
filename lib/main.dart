@@ -65,8 +65,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Real Time Metro Data'),),
-
+        title: const Text('Metro Tracker'),),
+        
         // Hamburger Menu
         drawer: Drawer(
           child: Column(
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 title: Text("Timetable Changes"),
                 leading: Icon(Icons.track_changes),
-                onTap: () => launchUrlString("https://www.nexus.org.uk/metro/updates?open=t_planned-works"),
+                onTap: () => launchUrlString("https://www.nexus.org.uk/metro/updates?open=t_timetable-updates"),
               ),
               ListTile(
                 title: Text("Source Code"),
@@ -130,7 +130,6 @@ class _HomePageState extends State<HomePage> {
         // The Navigation at the bottom of the screen, what else did you expect?
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
-
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.map_outlined),
