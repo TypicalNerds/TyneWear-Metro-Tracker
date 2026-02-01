@@ -1,5 +1,4 @@
-# Important Notice
-At the request of Nexus, this project is no longer available and will no longer be maintained.
+# At the request of Nexus, this project is no longer available and will no longer be maintained.
 ### Do not attempt to harass Nexus or any of their staff!
 This takedown request is well within their rights and I will respect that request, despite my disappointment.
 
