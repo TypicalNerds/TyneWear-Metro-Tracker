@@ -3,7 +3,7 @@
 This takedown request is well within their rights and I will respect that request, despite my disappointment.
 
 ## What happens next
-Well, I can't stop you from using the app, but if Nexus pushing updates to the API absolutely can disable the app, when it inevitably breaks, you will not recieve support or advice on fixing it.
+Well, I can't stop you from using the app, but Nexus pushing updates to the API absolutely can disable the app, when it inevitably breaks, you will not recieve support or advice on fixing it.
 If you want to guarentee a minimum level of functionality, please use the official [Pop App](https://www.nexus.org.uk/ticket-information/pop/pop-app) or [Nexus Website](https://www.nexus.org.uk/metro).
 
 ## Can I maintain my own version?
